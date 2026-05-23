@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@500;700&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Fredoka', sans-serif;
+}
+
+
+/* Login container */
+.login-container{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:85vh;
+}
+
+/* Login card */
+.login-box{
+    background:#F2ECE0;
+    padding:40px;
+    width:380px;
+    border-radius:25px;
+    border:5px solid #111;
+    box-shadow:10px 10px 0 #111;
+    text-align:center;
+}
+
+.login-box h2{
+    font-size:2.5rem;
+    margin-bottom:20px;
+    color:#111;
+}
+
+/* Inputs */
+input{
+    width:100%;
+    padding:15px;
+    margin:12px 0;
+    border:4px solid #111;
+    border-radius:14px;
+    font-size:1rem;
+    outline:none;
+}
+
+/* Button */
+button{
+    width:100%;
+    padding:15px;
+    margin-top:15px;
+    border:none;
+    background:#00C2FF;
+    color:white;
+    font-size:1rem;
+    font-weight:bold;
+    border-radius:14px;
+    cursor:pointer;
+    box-shadow:6px 6px 0 #111;
+    transition:.3s;
+}
+
+button:hover{
+    transform:translateY(-4px);
+}
+
+/* Small text */
+.login-box p{
+    margin-top:18px;
+    color:#111;
+}
+
+.login-box a{
+    color:#FF4D4D;
+    text-decoration:none;
+    font-weight:bold;
+}
