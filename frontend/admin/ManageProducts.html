@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+
+    <link rel="stylesheet" href="../admin/dashboard.css">
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/navbar.css">
+    <link rel="stylesheet" href="../css/footer.css">
+   
+</head>
+<body>
+    <div id="navbar-container"></div>
+
+        <div class="dashboard-layout">
+      
+      <div id="sidebar-container"></div>
+
+    <main>
+
+        
+        <section class="products-section">
+            <h2>Products</h2>
+
+            <div class="add-product">
+                <input type="text" id="product-name" placeholder="Product name">
+                <select id="product-category">
+                    <option value="">Select Category</option>
+                </select>
+                <select id="product-brand">
+                    <option value="">Select Brand</option>
+                </select>
+                <input type="text" id="product-description" placeholder="Product description">
+                <input type="number" id="product-price" placeholder="Product price">
+                <input type="file" id="product-image" accept="image/*">
+                <label class="featured-label">
+                    <input type="checkbox" id="product-featured">
+                    <span class="circle"></span>
+                    Featured
+                </label>
+                <button onclick="addProduct()">Add Product</button>
+            </div>
+
+            <!-- dashboard.html -->
+            <div id="admin-products-container"></div> 
+        </section>
+
+</main>
+
+
+</div>
+
+    <div id="edit-modal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.7); z-index:1000; align-items:center; justify-content:center;">
+    <div style="background:#1b1b1b; border:1px solid #2d2d2d; border-radius:16px; padding:28px; width:min(500px,90%); display:flex; flex-direction:column; gap:12px;">
+        <h3 style="color:#00C2FF;">Edit Product</h3>
+        <input type="hidden" id="edit-product-id">
+        <input type="text" id="edit-product-name" placeholder="Product name">
+        <select id="edit-product-category">
+            <option value="">Select Category</option>
+        </select>
+        <select id="edit-product-brand">
+            <option value="">Select Brand</option>
+        </select>
+        <input type="text" id="edit-product-description" placeholder="Product description">
+        <input type="number" id="edit-product-price" placeholder="Product price">
+        <input type="file" id="edit-product-image" accept="image/*">
+        <label class="featured-label">
+            <input type="checkbox" id="edit-product-featured">
+            <span class="circle"></span>
+            Featured
+        </label>
+        <div style="display:flex; gap:10px;">
+            <button onclick="submitUpdateProduct()">Save</button>
+            <button onclick="closeEditModal()" style="background:#333;">Cancel</button>
+        </div>
+    </div>
+</div>
+
+
+    <div id="footer-container"></div>   
+    
+    <script src="../js/auth.js"></script>
+    <script src="../js/navbar.js"></script>
+    <script src="../admin/dashboard.js"></script>
+    <script src="../js/footer.js"></script>
+    <script src="../admin/adminNav.js"></script>
+    
+</body> 

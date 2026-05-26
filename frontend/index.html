@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="RetroWorld — retro-styled PC parts shop. Build your dream gaming rig with hot deals on GPUs, CPUs, RAM, and storage." />
+  <meta name="theme-color" content="#2a2320" />
+  <title>RetroWorld — Build Your Dream PC</title>
+  <link rel="stylesheet" href="../css/index.css" />
+  <link rel="stylesheet" href="../css/navbar.css" />
+  <link rel="stylesheet" href="../css/footer.css" />
+  <link rel="stylesheet" href="../css/categories.css" />
+  <link rel="stylesheet" href="../css/products.css" />
+</head>
+<body>
+
+  <div id="navbar-container"></div>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+
+  <div class="retro-marquee" role="region" aria-label="Store announcements">
+    <div class="marquee-track">
+      <span class="marquee-content">
+        HOT DEALS · RTX 5090 IN STOCK · FREE SHIPPING · RETRO WORLD ARCADE · BUILD YOUR DREAM SETUP
+      </span>
+      <span class="marquee-content" aria-hidden="true">
+        HOT DEALS · RTX 5090 IN STOCK · FREE SHIPPING · RETRO WORLD ARCADE · BUILD YOUR DREAM SETUP
+      </span>
+      <span class="marquee-content" aria-hidden="true">
+        HOT DEALS · RTX 5090 IN STOCK · FREE SHIPPING · RETRO WORLD ARCADE · BUILD YOUR DREAM SETUP
+      </span>
+    </div>
+  </div>
+
+  <main id="main-content">
+
+    <section class="hero" aria-labelledby="hero-heading">
+      <div class="hero-text">
+        <p class="hero-eyebrow">Welcome to the arcade aisle</p>
+        <h2 id="hero-heading">BUILD YOUR DREAM PC</h2>
+        <p class="hero-sub">Crazy deals on GPUs, CPUs, RAM, SSDs &amp; gaming gear.</p>
+        <div class="hero-actions">
+          <a href="#categories" class="btn btn--primary">START BUILDING</a>
+          
+        </div>
+      </div>
+      <div class="hero-image">
+        <button type="button" class="hero-image-btn" id="heroImgTrigger" data-open-snake aria-label="Click desk photo to open Retro Snake game">
+          <span class="snake-sticker" aria-hidden="true">ARCADE</span>
+          <img
+            id="heroImg"
+            src="../assets/b4b8e3463193f110fd2329afb07d6c8b.jpg"
+            alt="Retro gaming desk with CRT monitor and vintage consoles"
+            width="700"
+            height="525"
+            fetchpriority="high"
+          />
+        </button>
+        <p class="hero-img-badge">Click the desk or <strong>PLAY SNAKE</strong> — mini-game inside</p>
+      </div>
+    </section>
+
+    
+
+    <section class="arcade-banner" id="arcade" aria-labelledby="arcade-heading">
+      <div class="arcade-cabinet">
+        <span class="arcade-cabinet__lights" aria-hidden="true"></span>
+        <h2 id="arcade-heading">RETRO WORLD ARCADE</h2>
+        <p>Free browser Snake — no coins required. Beat your high score while you browse parts.</p>
+        <button type="button" class="btn btn--arcade btn--lg" data-open-snake>INSERT COIN — PLAY SNAKE</button>
+      </div>
+    </section>
+
+    <section class="categories" id="categories" aria-labelledby="categories-heading">
+      <h2 id="categories-heading" class="section-title">SHOP CATEGORIES</h2>
+      <div class="cards" id="categories-container"></div>
+    </section>
+
+
+        <section class="products" id="hot-deals" aria-labelledby="deals-heading">
+          <h2 id="deals-heading" class="section-title">HOT DEALS</h2>
+          <div class="product-grid" id="hot-deals-container"></div>
+        </section>
+
+
+
+    <section class="featured-build" id="featured-build" aria-labelledby="featured-heading">
+      <div class="featured-showcase">
+        <div class="featured-image">
+          <span class="featured-image__label" aria-hidden="true">X99 EDITION</span>
+          <img
+            src="../assets/maxresdefault.jpg"
+            alt="Retro Beast X99 custom gaming setup with RGB lighting"
+            loading="lazy"
+            width="650"
+            height="488"
+          />
+        </div>
+        <div class="featured-content">
+          <span class="featured-tag">BUILD OF THE WEEK</span>
+          <h2 id="featured-heading">RETRO BEAST X99</h2>
+          <p class="featured-desc">High-FPS 1440p rig tuned for retro aesthetics and modern AAA titles.</p>
+          <ul class="spec-chips" aria-label="Build specifications">
+            <li class="spec-chip"><span class="spec-chip__icon" aria-hidden="true">GPU</span> RTX 4070</li>
+            <li class="spec-chip"><span class="spec-chip__icon" aria-hidden="true">CPU</span> Ryzen 7</li>
+            <li class="spec-chip"><span class="spec-chip__icon" aria-hidden="true">RAM</span> 32GB DDR5</li>
+            <li class="spec-chip"><span class="spec-chip__icon" aria-hidden="true">COOL</span> RGB AIO</li>
+          </ul>
+          <div class="featured-price">
+            <span class="featured-price__old">80,000 EGP</span>
+            <span class="featured-price__now">70,000 EGP</span>
+            <span class="featured-price__save">Save 10,000 EGP</span>
+          </div>
+          <a href="#hot-deals" class="btn btn--primary">SHOP THIS BUILD</a>
+        </div>
+      </div>
+    </section>
+
+  <section class="retro-strip" aria-label="Store highlights">
+      <ul class="retro-trust">
+        <li class="retro-trust__item">
+          <span class="retro-trust__icon" aria-hidden="true">⚡</span>
+          <span class="retro-trust__label"><strong>Fast</strong> shipping</span>
+        </li>
+        <li class="retro-trust__item">
+          <span class="retro-trust__icon" aria-hidden="true">🎮</span>
+          <span class="retro-trust__label"><strong>Gamer</strong> approved</span>
+        </li>
+        <li class="retro-trust__item">
+          <span class="retro-trust__icon" aria-hidden="true">💾</span>
+          <span class="retro-trust__label"><strong>Retro</strong> prices</span>
+        </li>
+        <li class="retro-trust__item">
+          <span class="retro-trust__icon" aria-hidden="true">🖥</span>
+          <span class="retro-trust__label"><strong>Custom</strong> builds</span>
+        </li>
+      </ul>
+    </section>  
+
+  </main>
+
+  <div class="scanline-flash" id="scanlineFlash" aria-hidden="true"></div>
+
+  <div class="game-overlay" id="gameOverlay" role="dialog" aria-modal="true" aria-labelledby="game-title" aria-hidden="true">
+    <div class="game-panel" id="gamePanel">
+
+      <div class="game-header">
+        <span class="game-title" id="game-title">RETRO SNAKE</span>
+        <button type="button" class="game-close-btn" id="gameCloseBtn" aria-label="Close game">✕</button>
+      </div>
+
+      <div class="game-scores">
+        <div class="score-box">SCORE <strong id="scoreDisplay">0</strong></div>
+        <div class="score-box">BEST <strong id="bestDisplay">0</strong></div>
+        <div class="score-box">LEVEL <strong id="levelDisplay">1</strong></div>
+      </div>
+
+      <canvas id="snakeCanvas" aria-label="Snake game board"></canvas>
+
+      <p class="game-controls-hint">arrow keys · WASD · or tap below</p>
+
+      <div class="game-dpad">
+        <button type="button" class="dpad-btn" id="dpadUp" aria-label="Up">▲</button>
+        <div class="dpad-row">
+          <button type="button" class="dpad-btn" id="dpadLeft" aria-label="Left">◀</button>
+          <div class="dpad-center" aria-hidden="true"></div>
+          <button type="button" class="dpad-btn" id="dpadRight" aria-label="Right">▶</button>
+        </div>
+        <button type="button" class="dpad-btn" id="dpadDown" aria-label="Down">▼</button>
+      </div>
+
+      <div class="game-message" id="gameMessage">
+        <h3>RETRO SNAKE</h3>
+        <p>eat the pixels, don't crash!</p>
+        <button type="button" class="game-start-btn" id="gameStartBtn">PLAY</button>
+      </div>
+
+    </div>
+  </div>
+
+  
+
+  <div id="footer-container"></div>
+
+  
+  <script src="../js/auth.js"></script>
+  <script src="../js/navbar.js"></script>
+  <script src="../js/footer.js"></script>
+  <script src="../js/snake.js"></script>
+  <script src="../js/categories.js"></script>
+  <script src="../js/products.js"></script>
+
+</body>
+</html>

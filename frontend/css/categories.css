@@ -1,0 +1,140 @@
+/* ─── Categories Section ─────────────────────────── */
+.categories {
+  width: min(1500px, 92%);
+  margin: 0 auto;
+  text-align: center;
+  border-radius: 35px;
+  padding: 50px 40px;
+}
+
+/* ─── Section Title ───────────────────────────────── */
+.categories .section-title {
+  font-size: 2.2rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #1a1a1a;
+  margin-bottom: 35px;
+}
+
+/* ─── Divider ─────────────────────────────────────── */
+.categories .divider {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 2.5rem;
+}
+
+.categories .divider span {
+  display: inline-block;
+  height: 6px;
+  border-radius: 3px;
+}
+/* ─── Categories Grid ─────────────────────────────── */
+#categories-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+/* ─── Category Card ───────────────────────────────── */
+#categories-container .card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  height: 148px;
+  width: 220px;          /* fixed width like product-card's 280px */
+  flex-shrink: 0;
+  border-radius: 18px;
+  border: 3px solid #1a1a1a;
+  box-shadow: 5px 5px 0 #1a1a1a;
+  overflow: hidden;
+  position: relative;
+  text-decoration: none;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+  cursor: pointer;
+}
+
+#categories-container .card:hover {
+  transform: translateY(-5px);
+  box-shadow: 7px 9px 0 #1a1a1a;
+}
+
+/* ─── Dark Gradient Overlay ───────────────────────── */
+#categories-container .card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.82) 38%,
+    rgba(0, 0, 0, 0.08)
+  );
+  z-index: 1;
+}
+
+/* ─── Coloured Top Stripe ─────────────────────────── */
+.card-stripe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  z-index: 3;
+}
+
+/* ─── Bottom Label ────────────────────────────────── */
+.card-label {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  padding: 0 10px 11px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+}
+
+.card-label-icon {
+  font-size: 24px;
+  line-height: 1;
+}
+
+.card-label-name {
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: #fff;
+  text-shadow: 2px 2px 0 #000;
+  white-space: nowrap;
+}
+
+/* ─── Responsive ──────────────────────────────────── */
+@media (max-width: 600px) {
+  #categories-container .card {
+    width: calc(50% - 8px);
+    height: 120px;
+  }
+
+  .categories {
+    padding: 30px 20px;
+  }
+
+  .categories .section-title {
+    font-size: 1.6rem;
+  }
+}
+
+@media (max-width: 380px) {
+  #categories-container .card {
+    width: calc(50% - 5px);
+    height: 110px;
+  }
+}
