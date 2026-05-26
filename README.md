@@ -86,7 +86,7 @@ source venv/bin/activate  # Linux/Mac
 venv\Scripts\activate     # Windows
 
 pip install -r requirements.txt
-uvicorn app.main:app --reload
+uvicorn backend.main:app --reload
 ```
 
 ### 3. Frontend Setup
