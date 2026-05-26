@@ -90,9 +90,12 @@ uvicorn backend.main:app --reload
 ```
 
 ### 3. Frontend Setup
-
-Just open `index.html` in your browser or use Live Server in VS Code.
-
+To run frontend on python server
+```bash
+cd frontend
+python -m http.server 5500   
+```
+ 
 ---
 
 ## 🔐 Authentication
@@ -139,4 +142,4 @@ Built by Omar Ahmed
 
 ## 📄 License
 
-This project is for educational purposes only.
+This project is for learning purposes only.
