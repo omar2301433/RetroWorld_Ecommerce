@@ -44,23 +44,6 @@
   margin-bottom: 8px;
 }
 
-/* ─── Deal Badge ─────────────────────────────────── */
-.deal-badge {
-  position: absolute;
-  top: 14px;
-  right: 14px;
-  z-index: 1;
-  padding: 6px 10px;
-  background: var(--salmon);
-  color: white;
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  border: 2px solid var(--ink);
-  border-radius: 8px;
-  box-shadow: 3px 3px 0 var(--ink);
-  transform: rotate(6deg);
-}
 
 /* ─── Product Thumbnails ─────────────────────────── */
 .product-thumb {

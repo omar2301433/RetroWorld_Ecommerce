@@ -26,6 +26,10 @@ const AdminSidebar = `
                 <span>🏷️</span>
                 Brands
             </a>
+            <a href="../admin/ManageBundles.html" class="sidebar-link">
+                <span>📦</span>
+                Bundles
+            </a>
         </nav>
 
       </aside>

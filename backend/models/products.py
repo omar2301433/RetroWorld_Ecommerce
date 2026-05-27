@@ -21,3 +21,8 @@ class Product(Base):
     )
     category = relationship("Category", back_populates="products")
     brand = relationship("Brand", back_populates="products")
+    bundles = relationship(
+        "Bundle",
+        secondary="bundle_products",
+        back_populates="products"
+    )

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+
+    <link rel="stylesheet" href="../admin/dashboard.css">
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/navbar.css">
+    <link rel="stylesheet" href="../css/footer.css">
+</head>
+
+<body>
+
+    <div id="navbar-container"></div>
+
+    <div class="dashboard-layout">
+
+        <div id="sidebar-container"></div>
+
+        <main>
+
+            <!-- BUNDLES SECTION -->
+            <section class="bundles-section">
+
+                <h2>Bundles</h2>
+
+                <!-- ADD BUNDLE FORM -->
+                <form class="add-bundle" onsubmit="addBundle()">
+
+                    <input
+                        type="text"
+                        id="bundle-name"
+                        placeholder="Bundle name"
+                        required
+                    >
+
+                    <textarea
+                        id="bundle-description"
+                        placeholder="Bundle description"
+                    ></textarea>
+
+                    <input
+                        type="number"
+                        id="bundle-price"
+                        placeholder="Bundle price"
+                        required
+                    >
+
+                    <div id="bundle-products" class="bundle-products-grid"></div>
+
+                    <!-- IMAGE -->
+                    <input
+                        type="file"
+                        id="bundle-image"
+                        accept="image/*"
+                    >
+
+                    <!-- IMAGE PREVIEW -->
+                    <img
+                        id="bundle-preview"
+                        style="
+                            width:120px;
+                            height:120px;
+                            object-fit:cover;
+                            border-radius:12px;
+                            display:none;
+                            border:1px solid #333;
+                        "
+                    >
+
+                    <!-- FEATURED -->
+                    <label class="featured-label">
+                        <input type="checkbox" id="bundle-featured">
+                        <span class="circle"></span>
+                        Featured
+                    </label>
+
+                    <button type="submit">
+                        Add Bundle
+                    </button>
+
+                </form>
+
+                <!-- BUNDLES LIST -->
+                <div id="admin-bundles-container"></div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+    <!-- EDIT MODAL -->
+    <div
+        id="edit-modal"
+        style="
+            display:none;
+            position:fixed;
+            inset:0;
+            background:rgba(0,0,0,0.7);
+            z-index:1000;
+            align-items:center;
+            justify-content:center;
+        "
+    >
+
+        <div
+            style="
+                background:#1b1b1b;
+                border:1px solid #2d2d2d;
+                border-radius:16px;
+                padding:28px;
+                width:min(500px,90%);
+                display:flex;
+                flex-direction:column;
+                gap:12px;
+            "
+        >
+
+            <h3 style="color:#00C2FF;">
+                Edit Bundle
+            </h3>
+
+            <input type="hidden" id="edit-bundle-id">
+
+            <!-- NAME -->
+            <input
+                type="text"
+                id="edit-bundle-name"
+                placeholder="Bundle name"
+            >
+
+            <!-- DESCRIPTION -->
+            <textarea
+                id="edit-bundle-description"
+                placeholder="Bundle description"
+            ></textarea>
+
+            <!-- PRICE -->
+            <input
+                type="number"
+                id="edit-bundle-price"
+                placeholder="Bundle price"
+            >
+
+            <div id="edit-bundle-products" class="bundle-products-grid"></div>
+
+            <!-- IMAGE -->
+            <input
+                type="file"
+                id="edit-bundle-image"
+                accept="image/*"
+            >
+
+            <!-- IMAGE PREVIEW -->
+            <img
+                id="edit-bundle-preview"
+                style="
+                    width:120px;
+                    height:120px;
+                    object-fit:cover;
+                    border-radius:12px;
+                    display:none;
+                    border:1px solid #333;
+                "
+            >
+
+            <!-- FEATURED -->
+            <label class="featured-label">
+                <input type="checkbox" id="edit-bundle-featured">
+                <span class="circle"></span>
+                Featured
+            </label>
+
+            <!-- ACTIONS -->
+            <div style="display:flex; gap:10px;">
+
+                <button onclick="submitUpdateBundle()">
+                    Save
+                </button>
+
+                <button
+                    onclick="closeEditModal()"
+                    style="background:#333;"
+                >
+                    Cancel
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div id="footer-container"></div>
+
+    <!-- SCRIPTS -->
+    <script src="../js/auth.js"></script>
+    <script src="../js/navbar.js"></script>
+    <script src="../admin/dashboard.js"></script>
+    <script src="../js/footer.js"></script>
+    <script src="../admin/adminNav.js"></script>
+
+</body>
+</html>

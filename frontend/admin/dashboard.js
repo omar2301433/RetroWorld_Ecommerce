@@ -13,6 +13,9 @@ const brandsContainer = document.getElementById("admin-brands-container");
 const brandInput = document.getElementById("brand-name");
 const brandCount = document.getElementById("brand-count");
 
+const bundlesContainer = document.getElementById("admin-bundles-container");
+const bundleCount = document.getElementById("bundle-count");
+
 const productsContainer =
     document.getElementById("admin-products-container");
 
@@ -789,9 +792,459 @@ async function deleteProduct(id) {
 }
 
 
+// =========================
+// BUNDLES
+// =========================
 
 
 
+async function loadBundleProducts() {
+
+    try {
+
+        const res = await apiFetch(
+            "http://127.0.0.1:8000/api/products/"
+        );
+
+        const products = await res.json();
+
+        const addContainer =
+            document.getElementById("bundle-products");
+
+        const editContainer =
+            document.getElementById("edit-bundle-products");
+
+        addContainer.innerHTML = "";
+        editContainer.innerHTML = "";
+
+        products.forEach(product => {
+            const item = `
+                <label class="bundle-product-item">
+                    <input type="checkbox" value="${product.id}">
+                    <span>${product.name}</span>
+                </label>
+            `;
+
+            addContainer.innerHTML += item;
+            editContainer.innerHTML += item;
+        });
+
+            } catch (err) {
+
+                console.log(err);
+
+            }
+
+        }
+
+        const bundleImageInput =
+            document.getElementById("bundle-image");
+
+        const bundlePreview =
+            document.getElementById("bundle-preview");
+
+        if (bundleImageInput) {
+
+            bundleImageInput.addEventListener("change", () => {
+
+                const file =
+                    bundleImageInput.files[0];
+
+                if (file) {
+
+                    bundlePreview.src =
+                        URL.createObjectURL(file);
+
+                    bundlePreview.style.display =
+                        "block";
+
+                }
+
+            });
+
+        }
+
+
+
+// ADD BUNDLE
+async function addBundle() {
+
+    
+
+    const name =
+        document.getElementById("bundle-name")
+        .value.trim();
+
+    const description =
+        document.getElementById("bundle-description")
+        .value.trim();
+
+    const price =
+        document.getElementById("bundle-price")
+        .value;
+
+    const featured =
+        document.getElementById("bundle-featured")
+        .checked;
+
+    const imageFile =
+        document.getElementById("bundle-image")
+        .files[0];
+
+    const productsSelect =
+        document.getElementById("bundle-products");
+
+    const selectedProducts = Array.from(
+    document.querySelectorAll("#bundle-products input[type='checkbox']:checked")
+    ).map(input => input.value);
+
+    if (!name) {
+        return alert("Bundle name required");
+    }
+
+    if (!price) {
+        return alert("Bundle price required");
+    }
+
+    if (selectedProducts.length === 0) {
+        return alert("Select at least one product");
+    }
+
+    const formData = new FormData();
+
+    formData.append("name", name);
+    formData.append("description", description);
+    formData.append("price", price);
+
+    formData.append(
+        "featured",
+        featured ? "true" : "false"
+    );
+
+    formData.append(
+        "product_ids",
+        selectedProducts.join(",")
+    );
+
+    if (imageFile) {
+
+        formData.append(
+            "image",
+            imageFile
+        );
+
+    }
+
+    try {
+
+        const res = await apiFetch(
+            "http://127.0.0.1:8000/api/bundles/",
+            {
+                method: "POST",
+                body: formData
+            }
+        );
+
+        if (!res.ok) {
+
+            const err = await res.json();
+
+            return alert(
+                err.detail || "Failed to add bundle"
+            );
+
+        }
+
+        // RESET
+        document.getElementById("bundle-name").value = "";
+        document.getElementById("bundle-description").value = "";
+        document.getElementById("bundle-price").value = "";
+        document.getElementById("bundle-featured").checked = false;
+        document.getElementById("bundle-image").value = "";
+
+        bundlePreview.style.display = "none";
+
+        Array.from(document.querySelectorAll("#bundle-products input[type='checkbox']"))
+            .forEach(checkbox => checkbox.checked = false);
+
+        getBundles();
+
+    } catch (err) {
+
+        console.log(err);
+
+    }
+
+}
+
+
+
+async function getBundles() {
+
+    try {
+
+        const res = await apiFetch(
+            "http://127.0.0.1:8000/api/bundles/"
+        );
+
+        const bundles = await res.json();
+
+        if (bundlesContainer) {
+
+            bundlesContainer.innerHTML = "";
+
+        }
+
+        bundles.forEach(bundle => {
+
+            const div =
+                document.createElement("div");
+
+            div.classList.add("product-card");
+
+            div.innerHTML = `
+
+                <img
+                    src="${bundle.image}"
+                    class="product-img"
+                />
+
+                <div class="product-content">
+
+                    <h3>${bundle.name}</h3>
+
+                    <p>
+                        ${bundle.description || ""}
+                    </p>
+
+                    <p>
+                        ${bundle.price} EGP
+                    </p>
+
+                    <small>
+                        Featured:
+                        ${bundle.featured ? "Yes" : "No"}
+                    </small>
+
+                    <div class="bundle-products-list">
+
+                        ${
+                            bundle.products
+                            ?.map(product => `
+                                <span>
+                                    ${product.name}
+                                </span>
+                            `)
+                            .join("")
+                        }
+
+                    </div>
+
+                </div>
+
+                <div class="product-actions">
+
+                    <button
+                        onclick='openBundleEditModal(${JSON.stringify(bundle)})'
+                    >
+                        Edit
+                    </button>
+
+                    <button
+                        onclick="deleteBundle(${bundle.id})"
+                    >
+                        Delete
+                    </button>
+
+                </div>
+            `;
+
+            if (bundlesContainer) {
+                bundlesContainer.appendChild(div);
+            }
+
+        });
+        if (bundleCount) {
+            bundleCount.textContent = bundles.length;
+        }
+
+    } catch (err) {
+
+        console.log(err);
+
+    }
+
+}
+
+
+
+// OPEN EDIT MODAL
+function openBundleEditModal(bundle) {
+
+    document.getElementById("edit-bundle-id").value =
+        bundle.id;
+
+    document.getElementById("edit-bundle-name").value =
+        bundle.name;
+
+    document.getElementById("edit-bundle-description").value =
+        bundle.description || "";
+
+    document.getElementById("edit-bundle-price").value =
+        bundle.price;
+
+    document.getElementById("edit-bundle-featured").checked =
+        bundle.featured;
+
+    const select =
+        document.getElementById("edit-bundle-products");
+
+   const checkboxes = document.querySelectorAll(
+    "#edit-bundle-products input[type='checkbox']"
+    );
+
+    checkboxes.forEach(cb => {
+        cb.checked = bundle.products.some(
+            product => product.id == cb.value
+        );
+    });
+
+    const modal =
+        document.getElementById("edit-modal");
+
+    modal.style.display = "flex";
+
+}
+
+
+
+// UPDATE BUNDLE
+async function submitUpdateBundle() {
+
+    const id =
+        document.getElementById("edit-bundle-id")
+        .value;
+
+    const name =
+        document.getElementById("edit-bundle-name")
+        .value.trim();
+
+    const description =
+        document.getElementById("edit-bundle-description")
+        .value.trim();
+
+    const price =
+        document.getElementById("edit-bundle-price")
+        .value;
+
+    const featured =
+        document.getElementById("edit-bundle-featured")
+        .checked;
+
+    const imageFile =
+        document.getElementById("edit-bundle-image")
+        .files[0];
+
+    const productsSelect =
+        document.getElementById("edit-bundle-products");
+
+    const selectedProducts =
+        Array.from(
+            document.querySelectorAll("#edit-bundle-products input[type='checkbox']:checked")
+        )
+        .map(checkbox => checkbox.value);
+
+    const formData = new FormData();
+
+    formData.append("name", name);
+    formData.append("description", description);
+    formData.append("price", price);
+
+    formData.append(
+        "featured",
+        featured ? "true" : "false"
+    );
+
+    formData.append(
+        "product_ids",
+        selectedProducts.join(",")
+    );
+
+    if (imageFile) {
+
+        formData.append(
+            "image",
+            imageFile
+        );
+
+    }
+
+    try {
+
+        const res = await apiFetch(
+            `http://127.0.0.1:8000/api/bundles/${id}`,
+            {
+                method: "PUT",
+                body: formData
+            }
+        );
+
+        if (!res.ok) {
+
+            const err = await res.json();
+
+            return alert(
+                err.detail || "Failed to update bundle"
+            );
+
+        }
+
+        closeEditModal();
+
+        getBundles();
+
+    } catch (err) {
+
+        console.log(err);
+
+    }
+
+}
+
+
+
+// DELETE BUNDLE
+async function deleteBundle(id) {
+
+    const confirmDelete =
+        confirm("Delete bundle?");
+
+    if (!confirmDelete) return;
+
+    try {
+
+        await apiFetch(
+            `http://127.0.0.1:8000/api/bundles/${id}`,
+            {
+                method: "DELETE"
+            }
+        );
+
+        getBundles();
+
+    } catch (err) {
+
+        console.log(err);
+
+    }
+
+}
+
+
+
+
+loadBundleProducts();
+getBundles();
 getUsers();
 getCategories();
 loadProductCategories();

@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from backend.database import Base, engine
-from backend.routers import auth, brands, categories, products
+from backend.routers import auth, brands, bundles, categories, products
 
 Base.metadata.create_all(bind=engine)
 
@@ -26,3 +26,4 @@ app.include_router(auth.router, prefix="/api/auth", tags=["Auth"])
 app.include_router(categories.router, prefix="/api", tags=["Categories"])
 app.include_router(brands.router, prefix="/api", tags=["Brands"])
 app.include_router(products.router, prefix="/api", tags=["Products"])
+app.include_router(bundles.router, prefix="/api", tags=["Bundles"])

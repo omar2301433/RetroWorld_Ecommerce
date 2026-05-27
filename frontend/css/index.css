@@ -477,7 +477,8 @@ body {
 .featured-build {
   width: min(1500px, 92%);
   margin: 0 auto;
-  padding: 20px 0 60px;
+  padding: 50px 0;
+  text-align: center;
 }
 
 .featured-showcase {
@@ -560,7 +561,7 @@ body {
 
 .featured-content {
   flex: 1 1 44%;
-  max-width: 520px;
+  max-width: 620px;
 }
 
 .featured-tag {
@@ -581,22 +582,23 @@ body {
 .featured-content h2 {
   font-size: clamp(2.2rem, 4.5vw, 3.8rem);
   line-height: 0.95;
+  margin-bottom: 30px;
+  color: var(--cream);
+  text-shadow: 3px 3px 0 var(--ink);
+}
+
+.featured-content p {
+  font-size: clamp(1.2rem, 2.5vw, 1.4rem);
+  line-height: 0.95;
   margin-bottom: 14px;
   color: var(--cream);
   text-shadow: 3px 3px 0 var(--ink);
 }
 
-.featured-desc {
-  font-size: 1.05rem;
-  line-height: 1.5;
-  margin-bottom: 22px;
-  color: rgba(244, 239, 230, 0.88);
-  max-width: 440px;
-}
-
 .spec-chips {
   display: flex;
-  flex-wrap: wrap;
+  line-height: 0.95;
+  margin-bottom: 14px;
   gap: 10px;
   list-style: none;
   margin: 0 0 24px;

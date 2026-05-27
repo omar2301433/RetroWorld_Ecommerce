@@ -167,7 +167,8 @@ main {
 .users-section,
 .categories-section,
 .products-section,
-.brands-section {
+.brands-section,
+.bundles-section {
     display: flex;
     flex-direction: column;
     gap: 18px;
@@ -176,7 +177,8 @@ main {
 .users-section h2,
 .categories-section h2,
 .products-section h2,
-.brands-section h2 {
+.brands-section h2,
+.bundles-section h2 {
     font-size: 1.8rem;
 
     color: #00C2FF;
@@ -188,7 +190,8 @@ main {
 
 #users-container,
 #admin-categories-container,
-#admin-brands-container {
+#admin-brands-container,
+#admin-bundles-container {
     display: grid;
 
     grid-template-columns:
@@ -252,7 +255,8 @@ main {
 
 .add-category,
 .add-product,
-.add-brand {
+.add-brand,
+.add-bundle {
     display: grid;
 
     grid-template-columns:
@@ -316,7 +320,10 @@ main {
 .add-category button,
 .add-brand button,
 .add-brand input,
-.add-brand textarea {
+.add-brand textarea,
+.add-bundle button,
+.add-bundle input,
+.add-bundle textarea {
     width: 100%;
 
     padding: 12px 14px;
@@ -341,7 +348,9 @@ main {
 .add-product select:focus,
 .add-product textarea:focus,
 .add-brand input:focus,
-.add-brand textarea:focus {
+.add-brand textarea:focus,
+.add-bundle input:focus,
+.add-bundle textarea:focus {
     border-color: #00C2FF;
 
     box-shadow:
@@ -583,6 +592,74 @@ button:hover {
 .delete-btn:hover,
 .category-card button:hover {
     background: #ff5555;
+}
+
+
+
+/* =========================================
+   BUNDLE PRODUCTS SELECTOR
+========================================= */
+
+.bundle-products-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(180px, 1fr));
+
+    gap: 12px;
+
+    max-height: 260px;
+
+    overflow-y: auto;
+
+    padding: 10px;
+
+    border-radius: 14px;
+
+    background: #fff5db;
+
+    border: 1px solid #2d2d2d;
+}
+
+.bundle-product-item {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 10px 12px;
+
+    border-radius: 12px;
+
+    background: white;
+
+    cursor: pointer;
+
+    transition: 0.25s ease;
+
+    border: 1px solid transparent;
+}
+
+.bundle-product-item:hover {
+    border-color: #00C2FF;
+
+    transform: translateY(-2px);
+}
+
+.bundle-product-item input {
+    width: 18px;
+    height: 18px;
+
+    accent-color: #00C2FF;
+}
+
+.bundle-product-item span {
+    font-size: 0.9rem;
+
+    font-weight: 600;
+
+    color: #111;
 }
 
 /* =========================================================
